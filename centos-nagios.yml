@@ -1,0 +1,7 @@
+---
+- name: Install Nagios on CentOS
+  hosts: centos
+  become: yes
+
+  roles:
+    - nagios-install

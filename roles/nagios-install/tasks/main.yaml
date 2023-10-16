@@ -1,0 +1,38 @@
+---
+- name: Install prerequisites on Ubuntu
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apache2
+    - php
+    - libapache2-mod-php
+    - php-gd
+    - libgd-dev
+    - unzip
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Nagios Core for Ubuntu
+  apt:
+    name: nagios4
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install prerequisites on CentOS
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - httpd
+    - php
+    - glibc
+    - gd
+    - gd-devel
+    - unzip
+  when: ansible_distribution == "CentOS"
+
+- name: Install Nagios Core on CentOS
+  yum:
+    name: nagios
+    state: present
+  when: ansible_distribution == "CentOS"

@@ -1,0 +1,7 @@
+---
+- name: Install Nagios on Ubuntu
+  hosts: ubuntu
+  become: yes
+
+  roles:
+    - nagios-install
